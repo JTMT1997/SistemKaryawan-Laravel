@@ -1,17 +1,18 @@
 <nav class="w3-sidebar w3-red w3-collapse w3-top w3-large w3-padding" style="z-index:3;width:300px;font-weight:bold;" id="mySidebar"><br>
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-button w3-hide-large w3-display-topleft" style="width:100%;font-size:22px">Close Menu</a>
     <div class="w3-container">
-    
+
     </div>
     <div class="w3-bar-block">
-        
+        <img class="img-profile rounded-circle" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}">
+
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <li class="nav-item">
                 <a class="nav-link active" href="{{url('karyawan')}}">
                     <i class="fa fa-user w3-xxlarge "> Karyawan</i>
                 </a>
             </li>
-        
+
             <li class="nav-item">
                 <a class="nav-link " href="{{url('status')}}">
                     <i class="fas fa-info w3-xxlarge "> Status</i>
@@ -36,9 +37,9 @@
                   </button>
                 </form>
 
-            
+
         </ul>
-        
+
     </div>
 </nav>
 <header class="w3-container w3-top w3-hide-large w3-red w3-xlarge w3-padding">

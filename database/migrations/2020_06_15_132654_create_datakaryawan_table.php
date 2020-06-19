@@ -14,10 +14,10 @@ class CreateDatakaryawanTable extends Migration
     public function up()
     {
         Schema::create('datakaryawan', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('status_id');
-            $table->integer('pendidikan_id');
-            $table->integer('posisi_id');
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('pendidikan_id');
+            $table->unsignedBigInteger('posisi_id');
             $table->string('nama');
             $table->string('slug');
             $table->text('alamat');
@@ -31,13 +31,10 @@ class CreateDatakaryawanTable extends Migration
             $table->timestamps();
 
 
-
-            // $table->foreign('posisi_id')->references('id')->on('posisi');
-            // $table->foreign('status_id')->references('id')->on('status');
-            // $table->foreign('pendidikan_id')->references('id')->on('pendidikan');
-
+            $table->foreign('posisi_id')->references('id')->on('posisi')->onDelete('cascade');
+            $table->foreign('status_id')->references('id')->on('status')->onDelete('cascade');
+            $table->foreign('pendidikan_id')->references('id')->on('pendidikan')->onDelete('cascade');
         });
-
     }
 
     /**

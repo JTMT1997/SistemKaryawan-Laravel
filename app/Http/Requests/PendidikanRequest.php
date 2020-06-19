@@ -24,10 +24,11 @@ class PendidikanRequest extends FormRequest
     public function rules()
     {
         return [
-           
+
             'karyawan_id'=>'integer',
             'pendidikan_terakhir'=>'required|max:255'
-            
+            // 'pendidikan_terakir '=>'required|string|in:SMA,S1,S2,S3'
+
         ];
     }
 }

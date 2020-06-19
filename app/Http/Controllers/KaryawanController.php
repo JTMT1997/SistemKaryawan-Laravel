@@ -8,6 +8,7 @@ use App\Karyawan;
 use App\Status;
 use App\Posisi;
 use App\Pendidikan;
+use PDF;
 use Illuminate\Support\Str;
 
 
@@ -32,12 +33,12 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-        
-        // $karyawan=Karyawan::all();
+
+        $karyawan=Karyawan::all();
         $pendidikan=Pendidikan::all();
         $posisi=Posisi::all();
         $status=Status::all();
-        return view('karyawan.create',compact('pendidikan','posisi','status'));
+        return view('karyawan.create',compact('karyawan','pendidikan','posisi','status'));
 
     }
 
@@ -49,17 +50,17 @@ class KaryawanController extends Controller
      */
     public function store(KaryawanRequest $request )
     {
-      
-        
 
-       
+
+
+
         $data = $request->all();
         $data['slug'] = Str::slug($request->nama);
 
         Karyawan::create($data);
 
         return redirect('karyawan');
-        
+
 
     }
 
@@ -82,7 +83,7 @@ class KaryawanController extends Controller
      */
     public function edit($id)
     {
-        
+
         $pendidikan=Pendidikan::all();
         $posisi=Posisi::all();
         $status=Status::all();
@@ -116,11 +117,24 @@ class KaryawanController extends Controller
      */
     public function destroy($id)
     {
-      
+
 
         $item=Karyawan::findOrFail($id);
         $item->delete();
 
         return redirect('karyawan');
+    }
+    public function generateInvoice($id)
+    {
+        $invoice = Karyawan::with(['backpend','tostatus','tojabatan'])->find($id);
+        $pdf = PDF::loadView('karyawan.print', compact('invoice'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
+    }
+    public function printall()
+    {
+        $karyawan=Karyawan::with(["backpend",'tostatus','tojabatan'
+        ])->get();
+        $pdf = PDF::loadView('karyawan.printall', compact('karyawan'))->setPaper('a4', 'landscape');
+        return $pdf->stream();
     }
 }

@@ -24,8 +24,8 @@ class StatusRequest extends FormRequest
     public function rules()
     {
         return [
-           
-            'nama_status'=>'required|max:255'
+
+            'nama_status'=>'required|string|in:Tetap,Kontrak'
         ];
     }
 }

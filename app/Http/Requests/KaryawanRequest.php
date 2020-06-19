@@ -29,7 +29,7 @@ class KaryawanRequest extends FormRequest
             'posisi_id'=>'required|integer',
             'nama'=>'required|max:255',
             'umur'=>'required|integer',
-            'jenis_kelamin'=>'required|max:13',
+            'jenis_kelamin' => 'required|string|in:LAKI_LAKI,PEREMPUAN',
             'email'=>'required|max:255',
             'no_telp'=>'required',
             'ttl'=>'required|date',

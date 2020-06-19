@@ -4,7 +4,7 @@
 <form action="{{url('posisi/store')}}" class="bg" method="POST" >
 	@csrf
 
-	Pendidikan Terakhir
+	{{-- Pendidikan Terakhir
 	<select name="pendidikan_id"  >
 		<option value="">Pilih</option>
 
@@ -12,9 +12,9 @@
 		<option value="{{$item->id}}" >
 			{{$item->pendidikan_terakhir}}
 		</option>
-			
+
 		@endforeach
-	</select><br>
+	</select><br> --}}
 	Nama Jabatan<input value="{{old('jabatan')}}" type="text" name="jabatan"  required="required"><br>
 	Gaji<input value="{{old('gaji')}}" type="text" name="gaji"  required="required"><br>
 	<input type="submit" value="Simpan Data">

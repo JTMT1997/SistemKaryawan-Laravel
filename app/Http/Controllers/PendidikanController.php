@@ -35,8 +35,8 @@ class PendidikanController extends Controller
      */
     public function create()
     {
-        
-        
+
+
         // return view('karyawan.create',compact('karyawan'));
         return view('pendidikan.create');
 
@@ -62,7 +62,7 @@ class PendidikanController extends Controller
 
         Pendidikan::create($pendidikan);
         return redirect('pendidikan');
-        
+
 
     }
 
@@ -84,9 +84,9 @@ class PendidikanController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {  
+    {
         $p=Pendidikan::findOrFail($id);
-       
+
         return view('pendidikan.edit',[
             'p'=>$p
             ]);
@@ -115,9 +115,7 @@ class PendidikanController extends Controller
      */
     public function destroy($id)
     {
-        $delete=Pendidikan::findOrFail($id);
-        $delete->delete();
-        return redirect('pendidikan');
+    //
 
     }
 }

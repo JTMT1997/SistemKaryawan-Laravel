@@ -15,7 +15,6 @@ class CreatePosisiTable extends Migration
     {
         Schema::create('posisi', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('pendidikan_id');
             $table->string('jabatan');
             $table->integer('gaji');
             $table->string('slug');

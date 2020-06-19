@@ -24,7 +24,7 @@ class PosisiRequest extends FormRequest
     public function rules()
     {
         return [
-            'pendidikan_id'=>'required|integer',
+            // 'pendidikan_id'=>'required|integer',
             'jabatan'=>'required|max:255',
             'gaji'=>'required|integer'
         ];

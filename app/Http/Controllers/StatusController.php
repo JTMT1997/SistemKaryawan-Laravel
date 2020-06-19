@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StatusRequest;
 use App\Status;
-
 use Illuminate\Support\Str;
 
 class StatusController extends Controller
@@ -27,7 +26,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        
+
         return view('status.create');
     }
 
@@ -39,13 +38,13 @@ class StatusController extends Controller
      */
     public function store(StatusRequest $request)
     {
-       
+
         $staatus= $request->all();
         $staatus['slug']=Str::slug($request->nama_status);
 
         Status::create($staatus);
 
-        
+
 
         return redirect('status');
     }
@@ -69,7 +68,7 @@ class StatusController extends Controller
      */
     public function edit($id)
     {
-        
+
         $s= Status::findOrFail($id);
         return view('status.edit',[
             's'=>$s
@@ -89,7 +88,7 @@ class StatusController extends Controller
         $data['slug']=Str::slug($request->nama_status);
         $status=Status::findOrFail($id);
 
-        
+
         $status->update($data);
         return redirect('status');
     }
@@ -102,8 +101,6 @@ class StatusController extends Controller
      */
     public function destroy($id)
     {
-        $status= Status::findOrFail($id);
-        $status->delete();
-        return redirect('status');
+       //
     }
 }

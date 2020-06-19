@@ -3,14 +3,21 @@
 @section('content')
 <form action="{{url('karyawan/store')}}" class="bg" method="POST" >
 	@csrf
-	
-	
-	
+
+
+
 	Nama<input value="{{old('nama')}}" type="text" name="nama"  required="required"><br>
 	Alamat<input value="{{old('alamat')}}" type="text" name="alamat"  required="required"><br>
 	Umur<input value="{{old('umur')}}" type="text" name="umur"  required="required"><br>
-	Jenis Kelamin<input value="{{old('jenis_kelamin')}}" type="text" name="jenis_kelamin"  required="required"><br>
-	Email<input value="{{old('email')}}" type="text" name="email"  required="required"><br>
+	{{-- Jenis Kelamin<input value="{{old('jenis_kelamin')}}" type="text" name="jenis_kelamin"  required="required"><br> --}}
+    Jenis Kelamin
+    <select name="jenis_kelamin" required>
+        <option value="">Pilih Status</option>
+        <option value="LAKI_LAKI">Laki-Laki</option>
+        <option value="PEREMPUAN" >Perempuan</option>
+    </select>
+<br>
+    Email<input value="{{old('email')}}" type="text" name="email"  required="required"><br>
 	No Telp<input value="{{old('no_telp')}}" type="text" name="no_telp"  required="required"><br>
 	Ttl<input value="{{old('ttl')}}" type="date" name="ttl"  required="required"><br>
 	Status
@@ -20,7 +27,7 @@
 		<option value="{{$item->id}}" >
 			{{$item->nama_status}}
 		</option>
-			
+
 		@endforeach
 	</select><br>
 
@@ -31,7 +38,7 @@
 		<option value="{{$item->id}}" >
 			{{$item->pendidikan_terakhir}}
 		</option>
-			
+
 		@endforeach
 	</select><br>
 
@@ -42,12 +49,12 @@
 		<option value="{{$item->id}}" >
 			{{$item->jabatan}}
 		</option>
-			
+
 		@endforeach
 	</select><br>
 	Tgl_masuk<input value="{{old('tgl_masuk')}}" type="date" name="tgl_masuk"  required="required"><br>
 
-	
+
 
 	<input type="submit" value="Simpan Data">
 </form>
