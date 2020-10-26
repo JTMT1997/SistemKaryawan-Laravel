@@ -8,6 +8,7 @@ use App\Karyawan;
 use App\Status;
 use App\Posisi;
 use App\Pendidikan;
+use App\SlackService;
 use PDF;
 use Illuminate\Support\Str;
 
@@ -56,9 +57,8 @@ class KaryawanController extends Controller
 
         $data = $request->all();
         $data['slug'] = Str::slug($request->nama);
-
-        Karyawan::create($data);
-
+        $slack = new SlackService();
+        $slack->slackMessage(Karyawan::create($data));
         return redirect('karyawan');
 
 
@@ -120,8 +120,9 @@ class KaryawanController extends Controller
 
 
         $item=Karyawan::findOrFail($id);
-        $item->delete();
-
+        $slack = new SlackService();
+        $slack->slackMessage( 'ID '. $id . ' telah terhapus');
+        $item->delete();   
         return redirect('karyawan');
     }
     public function generateInvoice($id)
