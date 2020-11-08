@@ -3,7 +3,7 @@
 	<head>
 		<title>Data Karyawan</title>
 
-		
+		@yield('css')
 		@include('Includes.css')
 		@stack('ttable')
 	</head>
@@ -48,5 +48,6 @@
 		
 
 	@stack('table')
+	@yield('js')
 	</body>
 </html>

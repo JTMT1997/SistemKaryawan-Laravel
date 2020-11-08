@@ -21,7 +21,9 @@ Route::get('/', function () {
 // Route::prefix('admink')->group(function(){
 
 
-
+Route::prefix('')->middleware(['auth','admin'])->group(function(){
+    Route::get('dashboard','DashboardController@dashboard');
+});
 
 Route::prefix('karyawan')->middleware(['auth','admin'])->group(function(){
 
@@ -33,6 +35,7 @@ Route::prefix('karyawan')->middleware(['auth','admin'])->group(function(){
     Route::delete('/destroy/{id}','KaryawanController@destroy');
     Route::get('/{id}/print','KaryawanController@generateInvoice');
     Route::get('/printall','KaryawanController@printall');
+    Route::get('dashboard','DashboardController@grafik');
 });
 
 //  });
