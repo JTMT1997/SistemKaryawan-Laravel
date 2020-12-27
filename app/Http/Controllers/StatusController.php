@@ -38,14 +38,9 @@ class StatusController extends Controller
      */
     public function store(StatusRequest $request)
     {
-
         $staatus= $request->all();
         $staatus['slug']=Str::slug($request->nama_status);
-
         Status::create($staatus);
-
-
-
         return redirect('status');
     }
 
@@ -67,12 +62,7 @@ class StatusController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-
-        $s= Status::findOrFail($id);
-        return view('status.edit',[
-            's'=>$s
-        ]);
+    {//
     }
 
     /**
@@ -84,13 +74,7 @@ class StatusController extends Controller
      */
     public function update(StatusRequest $request, $id)
     {
-        $data=$request->all();
-        $data['slug']=Str::slug($request->nama_status);
-        $status=Status::findOrFail($id);
-
-
-        $status->update($data);
-        return redirect('status');
+     //
     }
 
     /**

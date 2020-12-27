@@ -2,16 +2,9 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Requests\PendidikanRequest;
-
 use Illuminate\Support\Str;
 use App\Pendidikan;
-
-
-
-
-
 class PendidikanController extends Controller
 {
     /**
@@ -21,10 +14,7 @@ class PendidikanController extends Controller
      */
     public function index()
     {
-
         $pendidikan=Pendidikan::all();
-        // $karyawan = Karyawan::with('backpend')->get();
-        // dd($karyawan);
         return view('pendidikan.index',['pendidikan'=>$pendidikan]);
     }
 
@@ -35,11 +25,7 @@ class PendidikanController extends Controller
      */
     public function create()
     {
-
-
-        // return view('karyawan.create',compact('karyawan'));
         return view('pendidikan.create');
-
     }
 
     /**
@@ -50,20 +36,10 @@ class PendidikanController extends Controller
      */
     public function store(PendidikanRequest $request )
     {
-        // $pendidikan = new Pendidikan();
-        // $pendidikan->name=$request('name');
-
-        // $pendidikan=Pendidikan::with([
-        //     'tokaryawan','tos'
-        // ])->get();
-        // Pendidikan::create($pendidikan);
         $pendidikan = $request->all();
         $pendidikan['slug'] = Str::slug($request->id);
-
         Pendidikan::create($pendidikan);
         return redirect('pendidikan');
-
-
     }
 
     /**
@@ -86,10 +62,7 @@ class PendidikanController extends Controller
     public function edit($id)
     {
         $p=Pendidikan::findOrFail($id);
-
-        return view('pendidikan.edit',[
-            'p'=>$p
-            ]);
+        return view('pendidikan.edit',['p'=>$p]);
     }
 
     /**
@@ -101,9 +74,9 @@ class PendidikanController extends Controller
      */
     public function update(PendidikanRequest $request, $id)
     {
-     $data=$request->all();
-     $p=Pendidikan::findOrFail($id);
-     $p->update($data);
+        $data=$request->all();
+        $p=Pendidikan::findOrFail($id);
+        $p->update($data);
      return redirect('pendidikan');
     }
 
@@ -116,6 +89,5 @@ class PendidikanController extends Controller
     public function destroy($id)
     {
     //
-
     }
 }

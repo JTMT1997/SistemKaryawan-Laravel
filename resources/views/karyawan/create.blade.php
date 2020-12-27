@@ -3,59 +3,61 @@
 @section('content')
 <form action="{{url('karyawan/store')}}" class="bg" method="POST" >
 	@csrf
-
-
-
-	Nama<input value="{{old('nama')}}" type="text" name="nama"  required="required"><br>
-	Alamat<input value="{{old('alamat')}}" type="text" name="alamat"  required="required"><br>
-	Umur<input value="{{old('umur')}}" type="text" name="umur"  required="required"><br>
-	{{-- Jenis Kelamin<input value="{{old('jenis_kelamin')}}" type="text" name="jenis_kelamin"  required="required"><br> --}}
-    Jenis Kelamin
-    <select name="jenis_kelamin" required>
+    <label for="nama">Nama</label>
+    <input value="{{old('nama')}}" type="text" name="nama"  required="required" class="form-control">
+    <label for="alamat">Alamat</label>
+	<input value="{{old('alamat')}}" type="text" name="alamat"  required="required" class="form-control">
+    <label for="umur" >Umur</label>
+    <input value="{{old('umur')}}" type="text" name="umur"  required="required" class="form-control" onkeypress="return hanyaAngka(event)">
+    <label for="jenis kelamin"> Jenis Kelamin</label>
+    <select name="jenis_kelamin" required class="form-control">
         <option value="">Pilih Status</option>
         <option value="LAKI_LAKI">Laki-Laki</option>
         <option value="PEREMPUAN" >Perempuan</option>
     </select>
-<br>
-    Email<input value="{{old('email')}}" type="text" name="email"  required="required"><br>
-	No Telp<input value="{{old('no_telp')}}" type="text" name="no_telp"  required="required"><br>
-	Ttl<input value="{{old('ttl')}}" type="date" name="ttl"  required="required"><br>
-	Status
-	<select name="status_id"  >
+    <label for="email">Email</label>
+    <input value="{{old('email')}}" type="text" name="email"  required="required" class="form-control">
+    <label for="no telp">No Telp</label>
+    <input value="{{old('no_telp')}}" type="text" name="no_telp"  required="required" class="form-control" onkeypress="return hanyaAngka(event)">
+    <label for="ttl">Ttl</label>
+    <input value="{{old('ttl')}}" type="date" name="ttl"  required="required" class="form-control">
+	<label for="status">Status</label>
+	<select name="status_id" class="form-control">
 		<option value="">Siilahkan Pilih:</option>
 		@foreach ($status as $item)
 		<option value="{{$item->id}}" >
 			{{$item->nama_status}}
 		</option>
-
 		@endforeach
-	</select><br>
-
-	Pendidikan Terakhir
-	<select name="pendidikan_id"  >
+    </select>
+    <label for="pendidikan terakhir">Pendidikan Terakhir</label>
+	<select name="pendidikan_id" class="form-control">
 		<option value="">Siilahkan Pilih:</option>
 		@foreach ($pendidikan as $item)
 		<option value="{{$item->id}}" >
 			{{$item->pendidikan_terakhir}}
 		</option>
-
 		@endforeach
-	</select><br>
-
-	Posisi
-	<select name="posisi_id"  >
+    </select>
+    <label for="posisi">Posisi</label>
+	<select name="posisi_id"  class="form-control">
 		<option value="">Siilahkan Pilih:</option>
 		@foreach ($posisi as $item)
 		<option value="{{$item->id}}" >
 			{{$item->jabatan}}
 		</option>
-
 		@endforeach
-	</select><br>
-	Tgl_masuk<input value="{{old('tgl_masuk')}}" type="date" name="tgl_masuk"  required="required"><br>
-
-
-
+	</select>
+    <label for="tgl masuk">Tgl masuk</label>
+    <input value="{{old('tgl_masuk')}}" type="date" name="tgl_masuk"  required="required" class="form-control">
 	<input type="submit" value="Simpan Data">
 </form>
 @endsection
+<script>
+    function hanyaAngka(evt) {
+      var charCode = (evt.which) ? evt.which : event.keyCode
+       if (charCode > 31 && (charCode < 48 || charCode > 57))
+        return false;
+      return true;
+    }
+</script>

@@ -8,9 +8,7 @@
 
   <thead>
     <tr>
-      <th>
-
-      </th>
+      <th> </th>
       <th>Id</th>
       <th>Nama</th>
       <th>Umur</th>
@@ -20,7 +18,6 @@
       <th>Nomor Telepon</th>
       <th>Tanggal Lahir</th>
       <th>Tanggal Masuk</th>
-
 
 
     </tr>

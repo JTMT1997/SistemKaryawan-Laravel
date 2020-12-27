@@ -19,8 +19,6 @@ class PosisiController extends Controller
     public function index()
     {
         $posisi=Posisi::all();
-
-        // $posisi=Posisi::all();
         return view('posisi.index',['posisi'=>$posisi]);
     }
 
@@ -31,8 +29,6 @@ class PosisiController extends Controller
      */
     public function create()
     {
-
-
         $posisi=Posisi::all();
         $pendidikan=Pendidikan::all();
         return view('posisi.create',compact('posisi','pendidikan'));
@@ -47,12 +43,9 @@ class PosisiController extends Controller
      */
     public function store(PosisiRequest $request )
     {
-
         $posisi= $request->all();
         $posisi['slug']=Str::slug($request->nama_jabatan);
-
         Posisi::create($posisi);
-
         return redirect('posisi');
 
 
@@ -79,7 +72,6 @@ class PosisiController extends Controller
     {
         $pendidikan = Pendidikan::all();
         $posdit=Posisi::findOrFail($id);
-
         return view('posisi.edit',compact('posdit','pendidikan'));
     }
 
@@ -92,13 +84,10 @@ class PosisiController extends Controller
      */
     public function update(PosisiRequest $request, $id)
     {
-
         $data=$request->all();
         $data['slug']=Str::slug($request->jabatan);
         $posisi=Posisi::findOrFail($id);
         $posisi->update($data);
-
-
         return redirect('posisi');
     }
 

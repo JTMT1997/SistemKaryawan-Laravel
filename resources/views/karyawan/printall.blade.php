@@ -49,7 +49,7 @@
     <div class="container">
         <table>
             <caption>
-                Daengweb Invoice App
+                Sistem Karyawan
             </caption>
             <thead>
                 <tr>

@@ -34,7 +34,6 @@ class KaryawanController extends Controller
      */
     public function create()
     {
-
         $karyawan=Karyawan::all();
         $pendidikan=Pendidikan::all();
         $posisi=Posisi::all();
@@ -51,17 +50,11 @@ class KaryawanController extends Controller
      */
     public function store(KaryawanRequest $request )
     {
-
-
-
-
         $data = $request->all();
         $data['slug'] = Str::slug($request->nama);
         $slack = new SlackService();
         $slack->slackMessage(Karyawan::create($data));
         return redirect('karyawan');
-
-
     }
 
     /**
@@ -83,7 +76,6 @@ class KaryawanController extends Controller
      */
     public function edit($id)
     {
-
         $pendidikan=Pendidikan::all();
         $posisi=Posisi::all();
         $status=Status::all();
@@ -102,9 +94,7 @@ class KaryawanController extends Controller
     {
         $a=$request->all();
         $a['slug']=Str::slug($request->nama);
-
         $item=Karyawan::findOrFail($id);
-
         $item->update($a);
         return redirect('karyawan');
     }
@@ -118,11 +108,10 @@ class KaryawanController extends Controller
     public function destroy($id)
     {
 
-
         $item=Karyawan::findOrFail($id);
         $slack = new SlackService();
         $slack->slackMessage( 'ID '. $id . ' telah terhapus');
-        $item->delete();   
+        $item->delete();
         return redirect('karyawan');
     }
     public function generateInvoice($id)
