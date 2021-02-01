@@ -25,7 +25,7 @@ class StatusRequest extends FormRequest
     {
         return [
 
-            'nama_status'=>'required|string|in:Tetap,Kontrak'
+            'nama_status'=>'required|string|in:Tetap,Probation,Kontrak'
         ];
     }
 }
