@@ -5,7 +5,7 @@ namespace App;
 class SlackService{
 
     public function slackMessage($title = "", $message = ""){
-        $webhooklink = "https://hooks.slack.com/services/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";
+        $webhooklink = 'https://hooks.slack.com/services/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';
         $data = [
             "text"=> "*".$title."*",
             "attachments" => [
@@ -15,7 +15,7 @@ class SlackService{
             ]
         ];
         return $this->_sendCurl($webhooklink,$data);
-    }   
+    }
 
     private function _sendCurl($dataURL, $dataPost){
         $ch = curl_init();

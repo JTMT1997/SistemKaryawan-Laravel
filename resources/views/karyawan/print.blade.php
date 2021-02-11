@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Invoice</title>
+    <title>Data Karyawan</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <style>
         body{
@@ -58,15 +58,13 @@
                     <th>Jabatan</th>
                     <th>Pendidikan</th>
                 </tr>
-
-
             </thead>
             <tbody>
                 <tr>
-                    <td>{{ $invoice->nama }}</strong></td>
-                    <td>{{$invoice->tostatus->nama_status}}</td>
-                    <td>{{$invoice->tojabatan->jabatan}}</td>
-                    <td>{{$invoice->backpend->pendidikan_terakhir}}</td>
+                    <td>{{$karyawan->nama }}</strong></td>
+                    <td>{{$karyawan->tostatus->nama_status}}</td>
+                    <td>{{$karyawan->tojabatan->jabatan}}</td>
+                    <td>{{$karyawan->backpend->pendidikan_terakhir}}</td>
                 </tr>
             </tbody>
         </table>

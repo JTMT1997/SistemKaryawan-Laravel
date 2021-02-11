@@ -61,8 +61,8 @@ class PendidikanController extends Controller
      */
     public function edit($id)
     {
-        $p=Pendidikan::findOrFail($id);
-        return view('pendidikan.edit',['p'=>$p]);
+        $pendidikan=Pendidikan::findOrFail($id);
+        return view('pendidikan.edit',['pendidikan'=>$pendidikan]);
     }
 
     /**
@@ -75,8 +75,8 @@ class PendidikanController extends Controller
     public function update(PendidikanRequest $request, $id)
     {
         $data=$request->all();
-        $p=Pendidikan::findOrFail($id);
-        $p->update($data);
+        $pendidikan=Pendidikan::findOrFail($id);
+        $pendidikan->update($data);
      return redirect('pendidikan');
     }
 

@@ -11,17 +11,16 @@
       <th></th>
     </tr>
   </thead>
-<tbody>
+  <tbody>
+    @foreach($pendidikan as $grade)
     <tr>
-        @foreach($pendidikan as $s)
-        <td>{{$s->id}}</td>
-        <td>{{$s->pendidikan_terakhir}}</td>
+        <td>{{$grade->id}}</td>
+        <td>{{$grade->pendidikan_terakhir}}</td>
         <td>
-            <a href="{{url('pendidikan/edit/'.$s->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+            <a href="{{url('pendidikan/edit/'.$grade->id)}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
         </td>
     </tr>
-
-</tbody>
-@endforeach
+    @endforeach
+  </tbody>
 </table>
 @endsection

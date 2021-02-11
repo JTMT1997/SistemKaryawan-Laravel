@@ -27,8 +27,6 @@ class PendidikanRequest extends FormRequest
 
             'karyawan_id'=>'integer',
             'pendidikan_terakhir'=>'required|max:255'
-            // 'pendidikan_terakir '=>'required|string|in:SMA,S1,S2,S3'
-
         ];
     }
 }

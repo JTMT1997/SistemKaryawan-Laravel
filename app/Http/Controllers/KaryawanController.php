@@ -22,8 +22,7 @@ class KaryawanController extends Controller
      */
     public function index()
     {
-        $karyawan=Karyawan::with(["backpend",'tostatus','tojabatan'
-        ])->get();
+        $karyawan=Karyawan::with(["backpend",'tostatus','tojabatan'])->get();
         return view('karyawan.index',compact('karyawan'));
     }
 
@@ -92,10 +91,10 @@ class KaryawanController extends Controller
      */
     public function update(KaryawanRequest $request, $id)
     {
-        $a=$request->all();
-        $a['slug']=Str::slug($request->nama);
+        $update=$request->all();
+        $update['slug']=Str::slug($request->nama);
         $item=Karyawan::findOrFail($id);
-        $item->update($a);
+        $item->update($update);
         return redirect('karyawan');
     }
 
@@ -116,8 +115,8 @@ class KaryawanController extends Controller
     }
     public function generateInvoice($id)
     {
-        $invoice = Karyawan::with(['backpend','tostatus','tojabatan'])->find($id);
-        $pdf = PDF::loadView('karyawan.print', compact('invoice'))->setPaper('a4', 'landscape');
+        $karyawan = Karyawan::with(['backpend','tostatus','tojabatan'])->find($id);
+        $pdf = PDF::loadView('karyawan.print', compact('karyawan'))->setPaper('a4', 'landscape');
         return $pdf->stream();
     }
     public function printall()

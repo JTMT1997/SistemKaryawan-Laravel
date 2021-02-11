@@ -88,27 +88,19 @@ tr.shown td.details-control {
           '<th>Posisi Karyawan</th>'+
           '<td>'+d.tojabatan.jabatan+'</td>'+
         '</tr>'+
-
-
         '<tr>'+
           `<td>
-                            <a href="http://127.0.0.1:8000/karyawan/edit/${d.id}" class="btn btn-info"><i class="fas fa-edit"></i></a>
-                            <a href="http://127.0.0.1:8000/karyawan/${d.id}/print" class="btn btn-info"><i class="fa fa-print"></i></a>
-                            <form action="http://127.0.0.1:8000/karyawan/destroy/${d.id}" class="d-inline" method="post">
-                            @csrf
-                            @method('delete')
-                            <button class="btn btn-danger">
-                                <i class="fa fa-trash"></i>
-                            </button>
-                            </form>
-                        </td>`
+                <a href="http://127.0.0.1:8000/karyawan/edit/${d.id}" class="btn btn-info"><i class="fas fa-edit"></i></a>
+                <a href="http://127.0.0.1:8000/karyawan/${d.id}/print" class="btn btn-info"><i class="fa fa-print"></i></a>
+                <form action="http://127.0.0.1:8000/karyawan/destroy/${d.id}" class="d-inline" method="post">
+                @csrf
+                @method('delete')
+                <button class="btn btn-danger">
+                    <i class="fa fa-trash"></i>
+                </button>
+                </form>
+            </td>`
         '</tr>'+
-        // '<tr>'+
-        // 	'<td>Status:</td>'+
-        // 	'<td>'+d.extn+'</td>'+
-        // '</tr>'+
-
-
       '</table>';
     }
 
@@ -131,9 +123,6 @@ tr.shown td.details-control {
           { "data": "no_telp" },
           { "data": "ttl" },
           { "data": "tgl_masuk"}
-
-
-
         ],
         "order": [[1, 'asc']]
       } );
